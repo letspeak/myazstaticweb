@@ -5,13 +5,15 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://azapi.vsesdns.com/myapi/hello",
-         { mode: 'no-cors'},
-         {headers:  new Headers({
-          'Ocp-Apim-Subscription-Key': '620975c7ee634406a4c4214cd79b2e05',
-          'content-type': 'application/json'
-        })
-        }
+        const response = await fetch("https://my-az-apim-svc.azure-api.net/myazfunc/getName",//fetch("https://azapi.vsesdns.com/myapi/hello",
+          { mode: 'no-cors' },
+          {
+            headers: new Headers({
+              'Ocp-Apim-Subscription-Key': '620975c7ee634406a4c4214cd79b2e05',
+              'content-type': 'application/json',
+              'Accept': 'application/json'
+            })
+          }
         );
         if (!response.ok) {
           throw new Error(`Failed to fetch data: ${response.status} - ${response.statusText}`);
